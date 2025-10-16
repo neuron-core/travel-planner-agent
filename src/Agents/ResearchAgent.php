@@ -27,7 +27,7 @@ class ResearchAgent extends Agent
         if (isset($_ENV['OPENAI_API_KEY'])) {
             return new OpenAI(
                 $_ENV['OPENAI_API_KEY'],
-                'gpt-3.5-turbo'
+                'gpt-4o-mini'
             );
         }
 
