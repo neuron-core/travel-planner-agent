@@ -50,7 +50,7 @@ INSPECTOR_MAX_ITEMS=500
 Execute the agent with the command below:
 
 ```
-php research.php
+php agent.php
 ```
 
 ## Workflow architecture and Nodes
