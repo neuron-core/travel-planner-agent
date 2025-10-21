@@ -8,6 +8,7 @@ use App\Events\ProgressEvent;
 use App\Prompts;
 use NeuronAI\Chat\History\ChatHistoryInterface;
 use NeuronAI\Chat\Messages\ToolCallMessage;
+use NeuronAI\Chat\Messages\ToolCallResultMessage;
 use NeuronAI\Chat\Messages\UserMessage;
 use NeuronAI\Tools\ToolInterface;
 use NeuronAI\Workflow\Node;
@@ -39,6 +40,10 @@ class GenerateItinerary extends Node
             );
 
         foreach ($result as $item) {
+            if ($item instanceof ToolCallResultMessage) {
+                continue;
+            }
+
             if ($item instanceof ToolCallMessage){
                 yield new ProgressEvent(
                     \array_reduce($item->getTools(), function (string $carry, ToolInterface $tool): string {
